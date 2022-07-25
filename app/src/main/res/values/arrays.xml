@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preferences_renderers">
+        <item>Gecko</item>
+        <item>Blink</item>
+    </string-array>
+    <string-array name="preferences_renderer_items">
+        <item>mozilla</item>
+        <item>chromium</item>
+    </string-array>
+</resources>

@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">Archo Browser</string>
+    <string name="app_name" translatable="false">Archo Browser</string>
+    <string name="dialog_delete_data_title">Completely delete browsing data?</string>
+    <string name="dialog_delete_data_message">Are you sure you want to delete all of your browsing data? You cannot undo this once deleted.</string>
+    <string name="dialog_button_yes">Yes</string>
+    <string name="dialog_button_no">No</string>
+    <string name="dialog_button_ok">@android:string/ok</string>
+    <string name="dialog_button_cancel">@android:string/cancel</string>
+    <string name="preferences_category_web">Web</string>
+    <string name="preferences_item_renderer">Renderer</string>
+    <string name="preferences_item_sw_render">Use software rendering</string>
+    <string name="preferences_category_general">General</string>
+    <string name="preferences_item_delete_data">Delete browsing data</string>
+    <string name="preferences_item_delete_data_summary">Clear your saved bookmarks, history, and download entries</string>
+    <string name="preferences_item_manage_site_permissions">Manage site permissions</string>
+    <string name="preferences_item_download_opts">Download options</string>
+    <string name="preferences_item_histbook">History &amp; Bookmarks</string>
+    <string name="preferences_category_about">About</string>
+    <string name="preferences_item_app">@string/app_name</string>
+    <string name="preferences_item_app_summary">version 1.0.0</string>
+    <string name="preferences_item_copyright">Copyright © 2022 GianXD</string>
+    <string name="preferences_item_copyright_summary">Licensed under the BSD-3 Clause license</string>
+    <string name="toast_delete_browsing_data">Browsing data has been deleted.</string>
+    <string name="toast_sw_render_warn">Software rendering is enabled, performance may be slower.</string>
+    <string name="toast_restart_renderer">Make sure to restart when changing renderer!</string>
 </resources>
