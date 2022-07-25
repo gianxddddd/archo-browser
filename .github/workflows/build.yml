@@ -26,4 +26,6 @@ jobs:
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v3
         with:
-          path: app/build/outputs/apk/debug
+          name: APK artifact
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: warn
