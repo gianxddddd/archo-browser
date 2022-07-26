@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ga.gianxd.browser.MainActivity
 import ga.gianxd.browser.databinding.FragmentBrowserBinding
@@ -13,18 +16,33 @@ class BrowserFragment : Fragment() {
     private var _binding: FragmentBrowserBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var actionBar: ActionBar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBrowserBinding.inflate(inflater, container, false)
-        if (savedInstanceState != null) binding.webView.restoreState(savedInstanceState)
+        actionBar = (requireActivity() as AppCompatActivity).supportActionBar!!
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if (binding.webView.canGoBack()) {
+                        binding.webView.goBack()
+                        return
+                    }
+
+                    this.isEnabled = false
+                    (requireActivity() as AppCompatActivity).onBackPressed()
+                }
+            })
 
         binding.settingsButton.setOnClickListener {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
@@ -40,18 +58,13 @@ class BrowserFragment : Fragment() {
         _binding = null
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        binding.webView.saveState(outState)
-    }
-
     override fun onStart() {
         super.onStart()
-        (requireActivity() as MainActivity).supportActionBar!!.hide()
+        actionBar.hide()
     }
 
     override fun onStop() {
         super.onStop()
-        (requireActivity() as MainActivity).supportActionBar!!.show()
+        actionBar.show()
     }
 }
