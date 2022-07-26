@@ -28,4 +28,5 @@
     <string name="toast_delete_browsing_data">Browsing data has been deleted.</string>
     <string name="toast_sw_render_warn">Software rendering is enabled, performance may be slower.</string>
     <string name="toast_restart_renderer">Restart the app to apply rendering changes.</string>
+    <string name="toast_warn_mozilla_renderer">Gecko render is still in-development, switch to Blink for a working web view.</string>
 </resources>

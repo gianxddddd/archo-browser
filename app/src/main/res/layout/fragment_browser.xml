@@ -5,17 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/web"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Browser content will be here"
-        android:textAlignment="center"
-        tools:ignore="HardcodedText" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:name="ga.gianxd.browser.fragment.BrowserChildFragment" />
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
         android:layout_gravity="center"
         android:text="Tap to show preferences"
         tools:ignore="HardcodedText" />
