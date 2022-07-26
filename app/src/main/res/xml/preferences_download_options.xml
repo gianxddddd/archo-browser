@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditTextPreference
+        app:key="location"
+        app:title="@string/preferences_download_opts_location"
+        app:defaultValue="/storage/emulated/0/Downloads"
+        app:useSimpleSummaryProvider="true" />
+    <CheckBoxPreference
+        app:key="hideNotification"
+        app:title="@string/preferences_download_opts_hide_notif"
+        app:summaryOn="@string/preferences_download_opts_hide_notif_summary_on"
+        app:defaultValue="false" />
+</PreferenceScreen>

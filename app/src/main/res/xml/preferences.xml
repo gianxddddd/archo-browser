@@ -27,7 +27,8 @@
             app:title="@string/preferences_item_manage_site_permissions" />
         <Preference
             app:key="downloadOptions"
-            app:title="@string/preferences_item_download_opts" />
+            app:title="@string/preferences_item_download_opts"
+            app:fragment="ga.gianxd.browser.fragment.PreferencesDownloadOptionsFragment"/>
         <Preference
             app:key="histBooks"
             app:title="@string/preferences_item_histbook" />

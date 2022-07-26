@@ -20,6 +20,9 @@
     <string name="preferences_item_app_summary">version 1.0.0</string>
     <string name="preferences_item_copyright">Copyright © 2022 GianXD</string>
     <string name="preferences_item_copyright_summary">Licensed under the BSD-3 Clause license</string>
+    <string name="preferences_download_opts_location">Where to save</string>
+    <string name="preferences_download_opts_hide_notif">Hide notification</string>
+    <string name="preferences_download_opts_hide_notif_summary_on">Download notifications will be hidden.</string>
     <string name="toast_delete_browsing_data">Browsing data has been deleted.</string>
     <string name="toast_sw_render_warn">Software rendering is enabled, performance may be slower.</string>
     <string name="toast_restart_renderer">Make sure to restart when changing renderer!</string>
