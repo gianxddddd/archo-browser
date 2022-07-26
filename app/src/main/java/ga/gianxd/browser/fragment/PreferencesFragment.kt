@@ -13,7 +13,6 @@ import ga.gianxd.browser.R
 
 class PreferencesFragment : PreferenceFragmentCompat() {
     private lateinit var actionBar: ActionBar
-    private lateinit var renderer: ListPreference
     private lateinit var swRender: CheckBoxPreference
     private lateinit var deleteData: Preference
 
@@ -24,7 +23,6 @@ class PreferencesFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
-        renderer = findPreference("renderer")!!
         swRender = findPreference("swRender")!!
         deleteData = findPreference("deleteData")!!
         registerListeners()
@@ -43,17 +41,6 @@ class PreferencesFragment : PreferenceFragmentCompat() {
     }
 
     private fun registerListeners() {
-        renderer.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, value ->
-            if ((preference as ListPreference).value == value) {
-                return@OnPreferenceChangeListener false
-            }
-
-            Toast.makeText(requireContext(),
-                R.string.toast_restart_renderer,
-                Toast.LENGTH_LONG).show()
-
-            true
-        }
         swRender.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, value ->
             if ((value as Boolean)) {
                 Toast.makeText(requireContext(),

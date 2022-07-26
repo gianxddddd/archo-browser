@@ -1,2 +1,2 @@
 # archo-browser
-An advanced web browser for Android, written in Kotlin, powered by GeckoView.
+A web browser for Android, written in Kotlin, powered by WebView.

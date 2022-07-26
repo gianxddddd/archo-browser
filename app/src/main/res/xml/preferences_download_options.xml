@@ -8,6 +8,5 @@
     <CheckBoxPreference
         app:key="hideNotification"
         app:title="@string/preferences_download_opts_hide_notif"
-        app:summaryOn="@string/preferences_download_opts_hide_notif_summary_on"
         app:defaultValue="false" />
 </PreferenceScreen>

@@ -3,16 +3,10 @@
     <PreferenceCategory
         app:title="@string/preferences_category_web">
 
-        <ListPreference
-            app:key="renderer"
-            app:title="@string/preferences_item_renderer"
-            app:entries="@array/preferences_renderers"
-            app:entryValues="@array/preferences_renderer_items"
-            app:defaultValue="mozilla"
-            app:useSimpleSummaryProvider="true" />
         <CheckBoxPreference
             app:key="swRender"
-            app:title="@string/preferences_item_sw_render"
+            app:title="@string/preferences_sw_render"
+            app:summaryOn="@string/preferences_sw_render_summary_on"
             app:defaultValue="false" />
     </PreferenceCategory>
     <PreferenceCategory
@@ -20,27 +14,27 @@
 
         <Preference
             app:key="deleteData"
-            app:title="@string/preferences_item_delete_data"
-            app:summary="@string/preferences_item_delete_data_summary" />
+            app:title="@string/preferences_delete_data"
+            app:summary="@string/preferences_delete_data_summary" />
         <Preference
             app:key="manageSitePermissions"
-            app:title="@string/preferences_item_manage_site_permissions" />
+            app:title="@string/preferences_manage_site_permissions" />
         <Preference
             app:key="downloadOptions"
-            app:title="@string/preferences_item_download_opts"
+            app:title="@string/preferences_download_opts"
             app:fragment="ga.gianxd.browser.fragment.PreferencesDownloadOptionsFragment"/>
         <Preference
             app:key="histBooks"
-            app:title="@string/preferences_item_histbook" />
+            app:title="@string/preferences_histbook" />
     </PreferenceCategory>
     <PreferenceCategory
         app:title="@string/preferences_category_about">
 
         <Preference
-            app:title="@string/preferences_item_app"
-            app:summary="@string/preferences_item_app_summary"/>
+            app:title="@string/preferences_app"
+            app:summary="@string/preferences_app_summary"/>
         <Preference
-            app:title="@string/preferences_item_copyright"
-            app:summary="@string/preferences_item_copyright_summary" />
+            app:title="@string/preferences_copyright"
+            app:summary="@string/preferences_copyright_summary" />
     </PreferenceCategory>
 </PreferenceScreen>
