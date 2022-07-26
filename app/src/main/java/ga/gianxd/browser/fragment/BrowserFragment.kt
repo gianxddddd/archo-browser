@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import ga.gianxd.browser.MainActivity
 import ga.gianxd.browser.databinding.FragmentBrowserBinding
@@ -18,6 +19,7 @@ class BrowserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBrowserBinding.inflate(inflater, container, false)
+        if (savedInstanceState != null) binding.webView.restoreState(savedInstanceState)
         return binding.root
     }
 
@@ -27,6 +29,10 @@ class BrowserFragment : Fragment() {
         binding.settingsButton.setOnClickListener {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
+
+        binding.webView.webViewClient = WebViewClient()
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.loadUrl("https://github.com/gianxddddd/archo-browser")
     }
 
     override fun onDestroyView() {
@@ -36,6 +42,7 @@ class BrowserFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        binding.webView.saveState(outState)
     }
 
     override fun onStart() {
