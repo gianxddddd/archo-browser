@@ -25,7 +25,7 @@ class BrowserFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.settingsButton.setOnClickListener {
-            (requireActivity() as MainActivity).switch<PreferencesFragment>()
+            (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
     }
 

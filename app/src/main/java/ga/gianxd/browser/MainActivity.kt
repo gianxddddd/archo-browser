@@ -5,20 +5,21 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import ga.gianxd.browser.databinding.ActivityMainBinding
 import ga.gianxd.browser.fragment.BrowserFragment
+import ga.gianxd.browser.fragment.PreferencesFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var browserFragment: BrowserFragment
+    private lateinit var preferencesFragment: PreferencesFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        createFragments(savedInstanceState)
         createRootView()
-
-        if (savedInstanceState == null) createDefaultFragment()
+        initialize()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -31,26 +32,44 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Switches current fragment to a different fragment
+     * Switches current fragment with a different fragment by using the FRAGMENT_* variables
+     *
+     * @param i The fragment that is going to replace the current one
      */
-    inline fun <reified F : Fragment> switch() {
+    fun switch(i: Int) {
+        var fragment = Fragment()
+
+        if (i == FRAGMENT_BROWSER) fragment = browserFragment
+        if (i == FRAGMENT_PREFERENCES) fragment = preferencesFragment
+
         supportFragmentManager.commit {
-            replace<F>(R.id.mainFragmentContainer)
+            replace(R.id.mainFragmentContainer, fragment)
             setTransition(TRANSIT_FRAGMENT_FADE)
             setReorderingAllowed(true)
             addToBackStack(null)
         }
     }
 
-    private fun createDefaultFragment() {
+    private fun initialize() {
         supportFragmentManager.commit {
-            add<BrowserFragment>(R.id.mainFragmentContainer)
+            add(R.id.mainFragmentContainer, browserFragment)
             setReorderingAllowed(true)
         }
+    }
+
+    private fun createFragments(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) return
+        browserFragment = BrowserFragment()
+        preferencesFragment = PreferencesFragment()
     }
 
     private fun createRootView() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    companion object {
+        const val FRAGMENT_BROWSER: Int = 0
+        const val FRAGMENT_PREFERENCES: Int = 1
     }
 }
