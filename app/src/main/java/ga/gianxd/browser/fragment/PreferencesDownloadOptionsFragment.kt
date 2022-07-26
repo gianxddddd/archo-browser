@@ -20,7 +20,7 @@ class PreferencesDownloadOptionsFragment : PreferenceFragmentCompat() {
 
     override fun onStart() {
         super.onStart()
-        actionBar.title = "Download Options"
+        actionBar.title = resources.getString(R.string.actionbar_preferences_download_opts_title)
         actionBar.setDisplayHomeAsUpEnabled(true)
     }
 

@@ -32,7 +32,7 @@ class PreferencesFragment : PreferenceFragmentCompat() {
 
     override fun onStart() {
         super.onStart()
-        actionBar.title = "Settings"
+        actionBar.title = resources.getString(R.string.actionbar_preferences_title)
         actionBar.setDisplayHomeAsUpEnabled(true)
     }
 
