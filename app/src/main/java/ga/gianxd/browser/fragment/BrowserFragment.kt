@@ -34,6 +34,10 @@ class BrowserFragment : Fragment() {
         _binding = null
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onStart() {
         super.onStart()
         (requireActivity() as MainActivity).supportActionBar!!.hide()
