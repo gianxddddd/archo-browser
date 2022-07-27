@@ -1,16 +1,22 @@
 package ga.gianxd.browser.fragment
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ga.gianxd.browser.MainActivity
 import ga.gianxd.browser.databinding.FragmentBrowserBinding
+import ga.gianxd.browser.view.BrowserToolbarView
 
 class BrowserFragment : Fragment() {
     private var _binding: FragmentBrowserBinding? = null
@@ -34,6 +40,10 @@ class BrowserFragment : Fragment() {
         requireActivity().onBackPressedDispatcher
             .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    if (binding.toolbar.mode == BrowserToolbarView.MODE_EDIT) {
+                        binding.toolbar.toggle(BrowserToolbarView.MODE_DISPLAY)
+                        return
+                    }
                     if (binding.webView.canGoBack()) {
                         binding.webView.goBack()
                         return
@@ -48,7 +58,30 @@ class BrowserFragment : Fragment() {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
 
-        binding.webView.webViewClient = WebViewClient()
+        binding.webView.webViewClient = object: WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                binding.toolbar.progress.isVisible = true
+                binding.toolbar.url.setText(url)
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                binding.toolbar.progress.isVisible = false
+            }
+        }
+        binding.webView.webChromeClient = object: WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                super.onProgressChanged(view, newProgress)
+                binding.toolbar.progress.progress = newProgress
+            }
+
+            override fun onReceivedIcon(view: WebView?, icon: Bitmap?) {
+                super.onReceivedIcon(view, icon)
+                binding.toolbar.favicon.setImageBitmap(icon)
+            }
+        }
+
         binding.webView.settings.javaScriptEnabled = true
         binding.webView.loadUrl("https://github.com/gianxddddd/archo-browser")
     }

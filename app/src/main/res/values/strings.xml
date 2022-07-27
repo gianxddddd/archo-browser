@@ -2,6 +2,10 @@
     <string name="app_name" translatable="false">Archo Browser</string>
     <string name="actionbar_preferences_title">Settings</string>
     <string name="actionbar_preferences_download_opts_title">Download Options</string>
+    <string name="content_description_toolbar_security">Security state of the website.</string>
+    <string name="content_description_toolbar_favicon">The icon of the website.</string>
+    <string name="content_description_toolbar_cancel">Cancel URL editing.</string>
+    <string name="content_description_toolbar_menu">Show the browser menu.</string>
     <string name="dialog_delete_data_title">Completely delete browsing data?</string>
     <string name="dialog_delete_data_message">Are you sure you want to delete all of your browsing data? You cannot undo this once deleted.</string>
     <string name="dialog_button_yes">Yes</string>
@@ -26,4 +30,5 @@
     <string name="preferences_download_opts_hide_notif">Hide notification</string>
     <string name="toast_delete_browsing_data">Browsing data has been deleted.</string>
     <string name="toast_sw_render_warn">Software rendering is enabled, performance may be slower.</string>
+    <string name="toolbar_url_hint">Type a URL address or website</string>
 </resources>

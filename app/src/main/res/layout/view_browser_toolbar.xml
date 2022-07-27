@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:animateLayoutChanges="true"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:id="@+id/security"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_toolbar_security" />
+        <LinearLayout
+            android:id="@+id/editLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:background="@drawable/toolbar_edit_background"
+            tools:ignore="NestedWeights">
+
+            <ImageView
+                android:id="@+id/favicon"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:contentDescription="@string/content_description_toolbar_favicon"
+                android:scaleType="fitCenter" />
+            <TextView
+                android:id="@+id/urlReadable"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                android:hint="@string/toolbar_url_hint"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/url"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:maxLines="1"
+                android:gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:importantForAutofill="no"
+                android:hint="@string/toolbar_url_hint"
+                android:inputType="textUri|textMultiLine"
+                android:textSize="12sp"/>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_toolbar_cancel" />
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_toolbar_menu" />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:max="100" android:progress="0"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal" />
+</LinearLayout>

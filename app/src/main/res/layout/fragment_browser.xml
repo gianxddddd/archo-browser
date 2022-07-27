@@ -5,12 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ga.gianxd.browser.view.BrowserToolbarView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:elevation="8dp" />
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="match_parent"
