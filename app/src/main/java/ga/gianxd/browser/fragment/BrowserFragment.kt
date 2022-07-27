@@ -61,7 +61,7 @@ class BrowserFragment : Fragment() {
         binding.webView.webViewClient = object: WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                binding.toolbar.progress.isVisible = tru
+                binding.toolbar.progress.isVisible = true
 
             }
 
