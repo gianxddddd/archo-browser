@@ -61,13 +61,14 @@ class BrowserFragment : Fragment() {
         binding.webView.webViewClient = object: WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
-                binding.toolbar.progress.isVisible = true
-                binding.toolbar.url.setText(url)
+                binding.toolbar.progress.isVisible = tru
+
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 binding.toolbar.progress.isVisible = false
+                binding.toolbar.url.setText(url)
             }
         }
         binding.webView.webChromeClient = object: WebChromeClient() {
