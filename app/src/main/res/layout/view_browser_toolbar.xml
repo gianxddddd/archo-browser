@@ -59,7 +59,7 @@
                 android:background="@android:color/transparent"
                 android:importantForAutofill="no"
                 android:hint="@string/toolbar_url_hint"
-                android:inputType="textUri|textMultiLine"
+                android:inputType="textUri|text"
                 android:textSize="12sp"/>
         </LinearLayout>
         <ImageButton
