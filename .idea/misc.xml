@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/ic_cancel.xml" value="0.1825" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/ic_lock.xml" value="0.1825" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/ic_lock_open.xml" value="0.1825" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/ic_more_vert.xml" value="0.1825" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/ic_tab.xml" value="0.1825" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable-night/toolbar_edit_background.xml" value="0.1825" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable/ic_cancel.xml" value="0.1" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable/ic_launcher_background.xml" value="0.157" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/drawable/ic_lock.xml" value="0.1" />
@@ -13,7 +19,7 @@
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/layout/fragment_browser.xml" value="0.25" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/layout/fragment_browser_child.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/layout/view_browser_toolbar.xml" value="0.1" />
+        <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/layout/view_browser_toolbar.xml" value="0.22" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/xml/preferences.xml" value="0.1" />
         <entry key="..\:/Users/Gian/Documents/archo-browser/app/src/main/res/xml/preferences_download_options.xml" value="0.25" />
       </map>
