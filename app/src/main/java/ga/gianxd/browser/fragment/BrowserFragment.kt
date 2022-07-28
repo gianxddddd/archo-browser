@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -54,6 +54,15 @@ class BrowserFragment : Fragment() {
                 }
             })
 
+        binding.toolbar.url.setOnEditorActionListener { textView, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_GO) {
+                binding.toolbar.toggle(BrowserToolbarView.MODE_DISPLAY)
+                binding.webView.loadUrl(textView.text.toString())
+                return@setOnEditorActionListener true
+            }
+
+            return@setOnEditorActionListener false
+        }
         binding.settingsButton.setOnClickListener {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
