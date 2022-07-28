@@ -48,6 +48,7 @@ class BrowserToolbarView : LinearLayout {
             cancel.isVisible = false
             menu.isVisible = true
         } else if (mode == MODE_EDIT) {
+            url.setSelection(url.length())
             security.isVisible = false
             urlReadable.isVisible = false
             url.isVisible = true
