@@ -5,6 +5,7 @@
     <string name="content_description_toolbar_security">Security state of the website.</string>
     <string name="content_description_toolbar_favicon">The favicon of the website.</string>
     <string name="content_description_toolbar_cancel">Cancel URL editing.</string>
+    <string name="content_description_toolbar_tabs">Switch browser tabs.</string>
     <string name="content_description_toolbar_menu">Show the browser menu.</string>
     <string name="dialog_delete_data_title">Completely delete browsing data?</string>
     <string name="dialog_delete_data_message">Are you sure you want to delete all of your browsing data? You cannot undo this once deleted.</string>

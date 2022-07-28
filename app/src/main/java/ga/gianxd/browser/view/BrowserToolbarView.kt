@@ -17,6 +17,7 @@ class BrowserToolbarView : LinearLayout {
     lateinit var favicon: ImageView
     lateinit var url: EditText
     lateinit var cancel: ImageButton
+    lateinit var tabs: ImageButton
     lateinit var menu: ImageButton
     lateinit var progress: ProgressBar
 
@@ -46,6 +47,7 @@ class BrowserToolbarView : LinearLayout {
             urlReadable.isVisible = true
             url.isVisible = false
             cancel.isVisible = false
+            tabs.isVisible = true
             menu.isVisible = true
         } else if (mode == MODE_EDIT) {
             url.setSelection(url.length())
@@ -53,6 +55,7 @@ class BrowserToolbarView : LinearLayout {
             urlReadable.isVisible = false
             url.isVisible = true
             cancel.isVisible = true
+            tabs.isVisible = false
             menu.isVisible = false
 
             if (!url.hasFocus()) url.requestFocus()
@@ -70,6 +73,7 @@ class BrowserToolbarView : LinearLayout {
         urlReadable = findViewById(R.id.urlReadable)
         url = findViewById(R.id.url)
         cancel = findViewById(R.id.cancel)
+        tabs = findViewById(R.id.tabs)
         menu = findViewById(R.id.menu)
         progress = findViewById(R.id.progress)
 

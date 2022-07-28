@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -62,6 +63,9 @@ class BrowserFragment : Fragment() {
             }
 
             return@setOnEditorActionListener false
+        }
+        binding.toolbar.tabs.setOnClickListener {
+            Toast.makeText(context, "TODO: Implement browser tabs", Toast.LENGTH_LONG).show()
         }
         binding.settingsButton.setOnClickListener {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)

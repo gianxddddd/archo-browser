@@ -15,10 +15,13 @@
 
         <ImageButton
             android:id="@+id/security"
-            android:layout_width="48dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/content_description_toolbar_security" />
+            android:contentDescription="@string/content_description_toolbar_security"
+            android:src="@drawable/ic_lock" />
+
         <LinearLayout
             android:id="@+id/editLayout"
             android:layout_width="0dp"
@@ -32,8 +35,7 @@
                 android:id="@+id/favicon"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:padding="4dp"
                 android:contentDescription="@string/content_description_toolbar_favicon"
                 android:scaleType="fitCenter" />
 
@@ -71,17 +73,30 @@
 
         <ImageButton
             android:id="@+id/cancel"
-            android:layout_width="48dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/content_description_toolbar_cancel" />
+            android:contentDescription="@string/content_description_toolbar_cancel"
+            android:src="@drawable/ic_cancel" />
+
+        <ImageButton
+            android:id="@+id/tabs"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_toolbar_tabs"
+            android:src="@drawable/ic_tab" />
 
         <ImageButton
             android:id="@+id/menu"
-            android:layout_width="48dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/content_description_toolbar_menu" />
+            android:contentDescription="@string/content_description_toolbar_menu"
+            android:src="@drawable/ic_more_vert" />
     </LinearLayout>
     <ProgressBar
         android:id="@+id/progress"
