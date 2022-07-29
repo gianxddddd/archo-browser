@@ -14,7 +14,7 @@ class BrowserToolbarView : LinearLayout {
     var mode = MODE_DISPLAY
 
     lateinit var security: ImageButton
-    lateinit var favicon: ImageView
+    lateinit var favicon: BrowserFaviconView
     lateinit var url: EditText
     lateinit var cancel: ImageButton
     lateinit var tabs: ImageButton

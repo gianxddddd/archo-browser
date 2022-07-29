@@ -29,9 +29,10 @@
             android:layout_weight="1"
             android:padding="4dp"
             android:background="@drawable/toolbar_edit_background"
+            android:animateLayoutChanges="true"
             tools:ignore="NestedWeights">
 
-            <ImageView
+            <ga.gianxd.browser.view.BrowserFaviconView
                 android:id="@+id/favicon"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
