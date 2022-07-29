@@ -67,6 +67,9 @@ class BrowserFragment : Fragment() {
         binding.toolbar.tabs.setOnClickListener {
             Toast.makeText(context, "TODO: Implement browser tabs", Toast.LENGTH_LONG).show()
         }
+        binding.toolbar.menu.setOnClickListener {
+            Toast.makeText(context, "TODO: Implement menu", Toast.LENGTH_LONG).show()
+        }
         binding.settingsButton.setOnClickListener {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
