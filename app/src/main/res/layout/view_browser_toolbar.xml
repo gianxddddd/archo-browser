@@ -66,6 +66,8 @@
                 android:importantForAutofill="no"
                 android:imeOptions="actionGo"
                 android:inputType="textUri|text"
+                android:requiresFadingEdge="horizontal"
+                android:fadingEdgeLength="10dp"
                 android:textColorHint="#4E342E"
                 android:textSize="12sp"
                 tools:ignore="DuplicateSpeakableTextCheck" />
