@@ -79,6 +79,8 @@ class BrowserFragment : Fragment() {
                 super.onPageStarted(view, url, favicon)
                 binding.toolbar.progress.isVisible = true
 
+                if (binding.toolbar.url.text.toString() != url)
+                    binding.toolbar.url.setText(url)
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
