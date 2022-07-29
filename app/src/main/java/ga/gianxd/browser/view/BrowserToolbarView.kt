@@ -3,14 +3,15 @@ package ga.gianxd.browser.view
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import ga.gianxd.browser.R
+import ga.gianxd.browser.databinding.ViewBrowserToolbarBinding
 
-class BrowserToolbarView : LinearLayout {
+class BrowserToolbarView : FrameLayout {
     var mode = MODE_DISPLAY
 
     lateinit var security: ImageButton
@@ -23,6 +24,7 @@ class BrowserToolbarView : LinearLayout {
 
     private val tag = "BrowserToolbarView"
 
+    private lateinit var binding: ViewBrowserToolbarBinding
     private lateinit var toolBarLayout: LinearLayout
     private lateinit var editLayout: LinearLayout
     private lateinit var urlReadable: TextView
@@ -35,7 +37,7 @@ class BrowserToolbarView : LinearLayout {
         inflateView()
         findChildViews()
         registerListeners()
-        hideProgress()
+        progress.isVisible = false
         toggle(MODE_DISPLAY)
     }
 
@@ -68,17 +70,17 @@ class BrowserToolbarView : LinearLayout {
     }
 
     private fun findChildViews() {
-        security = findViewById(R.id.security)
-        favicon = findViewById(R.id.favicon)
-        urlReadable = findViewById(R.id.urlReadable)
-        url = findViewById(R.id.url)
-        cancel = findViewById(R.id.cancel)
-        tabs = findViewById(R.id.tabs)
-        menu = findViewById(R.id.menu)
-        progress = findViewById(R.id.progress)
+        security = binding.security
+        favicon = binding.favicon
+        urlReadable = binding.urlReadable
+        url = binding.url
+        cancel = binding.cancel
+        tabs = binding.tabs
+        menu = binding.menu
+        progress = binding.progress
 
-        toolBarLayout = findViewById(R.id.toolbarLayout)
-        editLayout = findViewById(R.id.editLayout)
+        toolBarLayout = binding.toolbarLayout
+        editLayout = binding.editLayout
     }
 
     private fun registerListeners() {
@@ -95,12 +97,8 @@ class BrowserToolbarView : LinearLayout {
         cancel.setOnClickListener { toggle(MODE_DISPLAY) }
     }
 
-    private fun hideProgress() {
-        progress.isVisible = false
-    }
-
     private fun inflateView() {
-        LayoutInflater.from(context).inflate(R.layout.view_browser_toolbar, this, true)
+        binding = ViewBrowserToolbarBinding.bind(View.inflate(context, R.layout.view_browser_toolbar, this))
     }
 
     companion object {
