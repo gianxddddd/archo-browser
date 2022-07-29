@@ -14,8 +14,8 @@
     <string name="dialog_button_ok">@android:string/ok</string>
     <string name="dialog_button_cancel">@android:string/cancel</string>
     <string name="preferences_category_web">Web</string>
-    <string name="preferences_sw_render">Use software rendering</string>
-    <string name="preferences_sw_render_summary_on">Enabled, performance might be slow.</string>
+    <string name="preferences_sw_render">Software rendering</string>
+    <string name="preferences_sw_render_summary_on">Using software rendering, performance might be slow.</string>
     <string name="preferences_category_general">General</string>
     <string name="preferences_delete_data">Delete browsing data</string>
     <string name="preferences_delete_data_summary">Clear your saved bookmarks, history, and download entries</string>
