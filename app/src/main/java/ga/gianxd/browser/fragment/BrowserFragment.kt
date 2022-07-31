@@ -104,14 +104,14 @@ class BrowserFragment : Fragment() {
                 }
             })
 
-        binding.toolbar.url.setOnEditorActionListener { textView, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_GO) {
+        binding.toolbar.url.setOnEditorActionListener { textView, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_GO || event != null) {
                 binding.toolbar.toggle(BrowserToolbarView.MODE_DISPLAY)
                 webSession.loadUri(textView.text.toString())
                 return@setOnEditorActionListener true
             }
 
-            return@setOnEditorActionListener false
+            false
         }
         binding.toolbar.tabs.setOnClickListener {
             Toast.makeText(context, "TODO: Implement browser tabs", Toast.LENGTH_LONG).show()
