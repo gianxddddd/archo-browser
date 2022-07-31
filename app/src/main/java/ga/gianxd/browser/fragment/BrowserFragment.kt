@@ -31,6 +31,8 @@ class BrowserFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (webRuntime == null) webRuntime = GeckoRuntime.create(requireContext())
+
         val webUserAgent = "Mozilla/5.0 (Linux; Android ${android.os.Build.VERSION.RELEASE}; ${android.os.Build.MODEL}) " +
                 "AppleWebKit/537.36 (KHTML, like Gecko) ArchoBrowser/100.0.20220425210429 Mobile Safari/537.36"
         val webSessionSettings = GeckoSessionSettings.Builder()
@@ -38,7 +40,6 @@ class BrowserFragment : Fragment() {
             .userAgentOverride(webUserAgent)
             .build()
 
-        webRuntime = GeckoRuntime.create(requireContext())
         webSession = GeckoSession(webSessionSettings)
 
         webSession.contentDelegate = object: GeckoSession.ContentDelegate {}
