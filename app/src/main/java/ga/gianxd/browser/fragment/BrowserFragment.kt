@@ -130,7 +130,6 @@ class BrowserFragment : Fragment() {
 
         if (webRuntime != null && !webSession.isOpen) webSession.open(webRuntime!!)
         binding.webContents.setSession(webSession)
-        webSession.loadUri("https://github.com/gianxddddd/archo-browser")
     }
 
     override fun onDestroyView() {
