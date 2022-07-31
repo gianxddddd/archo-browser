@@ -73,12 +73,12 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/cancel"
+            android:id="@+id/clear"
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/content_description_toolbar_cancel"
+            android:contentDescription="@string/content_description_toolbar_clear"
             android:src="@drawable/ic_cancel" />
 
         <ImageButton

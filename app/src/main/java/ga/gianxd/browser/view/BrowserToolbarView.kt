@@ -17,7 +17,7 @@ class BrowserToolbarView : FrameLayout {
     lateinit var security: ImageButton
     lateinit var favicon: BrowserFaviconView
     lateinit var url: EditText
-    lateinit var cancel: ImageButton
+    lateinit var clear: ImageButton
     lateinit var tabs: ImageButton
     lateinit var menu: ImageButton
     lateinit var progress: ProgressBar
@@ -48,7 +48,7 @@ class BrowserToolbarView : FrameLayout {
             security.isVisible = true
             urlReadable.isVisible = true
             url.isVisible = false
-            cancel.isVisible = false
+            clear.isVisible = false
             tabs.isVisible = true
             menu.isVisible = true
         } else if (mode == MODE_EDIT) {
@@ -56,7 +56,7 @@ class BrowserToolbarView : FrameLayout {
             security.isVisible = false
             urlReadable.isVisible = false
             url.isVisible = true
-            cancel.isVisible = true
+            clear.isVisible = true
             tabs.isVisible = false
             menu.isVisible = false
 
@@ -74,7 +74,7 @@ class BrowserToolbarView : FrameLayout {
         favicon = binding.favicon
         urlReadable = binding.urlReadable
         url = binding.url
-        cancel = binding.cancel
+        clear = binding.clear
         tabs = binding.tabs
         menu = binding.menu
         progress = binding.progress
@@ -94,7 +94,7 @@ class BrowserToolbarView : FrameLayout {
         }
 
         urlReadable.setOnClickListener { toggle(MODE_EDIT) }
-        cancel.setOnClickListener { toggle(MODE_DISPLAY) }
+        clear.setOnClickListener { url.text.clear() }
     }
 
     private fun inflateView() {
