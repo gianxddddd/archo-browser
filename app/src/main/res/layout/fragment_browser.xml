@@ -9,8 +9,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
-    <WebView
-        android:id="@+id/webView"
+    <org.mozilla.geckoview.GeckoView
+        android:id="@+id/webContents"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

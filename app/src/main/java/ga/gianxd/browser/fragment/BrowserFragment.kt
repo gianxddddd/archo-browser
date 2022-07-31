@@ -1,14 +1,10 @@
 package ga.gianxd.browser.fragment
 
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.webkit.WebChromeClient
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
@@ -18,12 +14,20 @@ import androidx.fragment.app.Fragment
 import ga.gianxd.browser.MainActivity
 import ga.gianxd.browser.databinding.FragmentBrowserBinding
 import ga.gianxd.browser.view.BrowserToolbarView
+import org.mozilla.geckoview.GeckoRuntime
+import org.mozilla.geckoview.GeckoSession
+import org.mozilla.geckoview.GeckoSessionSettings
 
 class BrowserFragment : Fragment() {
     private var _binding: FragmentBrowserBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var actionBar: ActionBar
+
+    private lateinit var webSession: GeckoSession
+
+    private var canGoBack = false
+    private var canGoForward = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +49,8 @@ class BrowserFragment : Fragment() {
                         binding.toolbar.toggle(BrowserToolbarView.MODE_DISPLAY)
                         return
                     }
-                    if (binding.webView.canGoBack()) {
-                        binding.webView.goBack()
+                    if (canGoBack) {
+                        webSession.goBack()
                         return
                     }
 
@@ -58,7 +62,7 @@ class BrowserFragment : Fragment() {
         binding.toolbar.url.setOnEditorActionListener { textView, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_GO) {
                 binding.toolbar.toggle(BrowserToolbarView.MODE_DISPLAY)
-                binding.webView.loadUrl(textView.text.toString())
+                webSession.loadUri(textView.text.toString())
                 return@setOnEditorActionListener true
             }
 
@@ -74,9 +78,19 @@ class BrowserFragment : Fragment() {
             (requireActivity() as MainActivity).switch(MainActivity.FRAGMENT_PREFERENCES)
         }
 
-        binding.webView.webViewClient = object: WebViewClient() {
-            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                super.onPageStarted(view, url, favicon)
+        val webUserAgent = "Mozilla/5.0 (Linux; Android ${android.os.Build.VERSION.RELEASE}; ${android.os.Build.MODEL}) " +
+                "AppleWebKit/537.36 (KHTML, like Gecko) ArchoBrowser/100.0.20220425210429 Mobile Safari/537.36"
+        val webSessionSettings = GeckoSessionSettings.Builder()
+            .allowJavascript(true)
+            .userAgentOverride(webUserAgent)
+            .build()
+
+        webSession = GeckoSession(webSessionSettings)
+
+        webSession.contentDelegate = object: GeckoSession.ContentDelegate {}
+        webSession.progressDelegate = object: GeckoSession.ProgressDelegate {
+            override fun onPageStart(session: GeckoSession, url: String) {
+                super.onPageStart(session, url)
                 binding.toolbar.favicon.setFavicon(null)
                 binding.toolbar.progress.isVisible = true
 
@@ -84,30 +98,43 @@ class BrowserFragment : Fragment() {
                     binding.toolbar.url.setText(url)
             }
 
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
+            override fun onPageStop(session: GeckoSession, success: Boolean) {
+                super.onPageStop(session, success)
                 binding.toolbar.progress.isVisible = false
+            }
+
+            override fun onProgressChange(session: GeckoSession, progress: Int) {
+                super.onProgressChange(session, progress)
+                binding.toolbar.progress.progress = progress
+            }
+        }
+        webSession.navigationDelegate = object: GeckoSession.NavigationDelegate {
+            override fun onLocationChange(session: GeckoSession, url: String?) {
+                super.onLocationChange(session, url)
                 binding.toolbar.url.setText(url)
             }
-        }
-        binding.webView.webChromeClient = object: WebChromeClient() {
-            override fun onProgressChanged(view: WebView?, newProgress: Int) {
-                super.onProgressChanged(view, newProgress)
-                binding.toolbar.progress.progress = newProgress
+
+            override fun onCanGoBack(session: GeckoSession, canGoBack: Boolean) {
+                super.onCanGoBack(session, canGoBack)
+                this@BrowserFragment.canGoBack = canGoBack
             }
 
-            override fun onReceivedIcon(view: WebView?, icon: Bitmap?) {
-                super.onReceivedIcon(view, icon)
-                binding.toolbar.favicon.setFavicon(icon)
+            override fun onCanGoForward(session: GeckoSession, canGoForward: Boolean) {
+                super.onCanGoForward(session, canGoForward)
+                this@BrowserFragment.canGoForward = canGoForward
             }
         }
 
-        binding.webView.settings.javaScriptEnabled = true
-        binding.webView.loadUrl("https://github.com/gianxddddd/archo-browser")
+        webRuntime = GeckoRuntime.create(requireContext())
+        webSession.open(webRuntime!!)
+        webSession.loadUri("https://github.com/gianxddddd/archo-browser")
+        binding.webContents.setSession(webSession)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.webContents.releaseSession()
+        webRuntime?.shutdown()
         _binding = null
     }
 
@@ -119,5 +146,9 @@ class BrowserFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         actionBar.show()
+    }
+
+    companion object {
+        private var webRuntime: GeckoRuntime? = null
     }
 }
