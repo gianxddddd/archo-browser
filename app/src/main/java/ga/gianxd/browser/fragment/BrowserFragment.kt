@@ -45,19 +45,14 @@ class BrowserFragment : Fragment() {
         webSession.progressDelegate = object: GeckoSession.ProgressDelegate {
             override fun onPageStart(session: GeckoSession, url: String) {
                 super.onPageStart(session, url)
-                binding.toolbar.progress.isVisible = true
 
                 if (binding.toolbar.url.text.toString() != url)
                     binding.toolbar.url.setText(url)
             }
 
-            override fun onPageStop(session: GeckoSession, success: Boolean) {
-                super.onPageStop(session, success)
-                binding.toolbar.progress.isVisible = false
-            }
-
             override fun onProgressChange(session: GeckoSession, progress: Int) {
                 super.onProgressChange(session, progress)
+                binding.toolbar.progress.isVisible = progress in 1..99
                 binding.toolbar.progress.progress = progress
             }
         }
