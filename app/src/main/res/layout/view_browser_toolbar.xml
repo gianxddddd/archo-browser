@@ -9,8 +9,7 @@
         android:layout_height="match_parent"
         android:padding="8dp"
         android:orientation="horizontal"
-        android:animateLayoutChanges="true"
-        tools:ignore="UselessParent">
+        android:animateLayoutChanges="true">
 
         <ImageButton
             android:id="@+id/security"
@@ -28,8 +27,7 @@
             android:layout_weight="1"
             android:padding="4dp"
             android:background="@drawable/toolbar_edit_background"
-            android:animateLayoutChanges="true"
-            tools:ignore="NestedWeights">
+            android:animateLayoutChanges="true">
 
             <ga.gianxd.browser.view.BrowserFaviconView
                 android:id="@+id/favicon"
@@ -50,7 +48,8 @@
                 android:gravity="center_vertical"
                 android:hint="@string/toolbar_url_hint"
                 android:textColorHint="#4E342E"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="NestedWeights" />
 
             <EditText
                 android:id="@+id/url"
