@@ -91,7 +91,6 @@ class BrowserFragment : Fragment() {
         webSession.progressDelegate = object: GeckoSession.ProgressDelegate {
             override fun onPageStart(session: GeckoSession, url: String) {
                 super.onPageStart(session, url)
-                binding.toolbar.favicon.setFavicon(null)
                 binding.toolbar.progress.isVisible = true
 
                 if (binding.toolbar.url.text.toString() != url)
